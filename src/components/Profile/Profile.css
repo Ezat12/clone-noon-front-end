@@ -1,0 +1,3 @@
+.checked-input .gender div input:checked {
+  background-color: red;
+}

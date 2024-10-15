@@ -1,0 +1,41 @@
+.brands div .span-brand {
+  width: 14px;
+  height: 14px;
+  background-color: transparent;
+  margin-right: 7px;
+  border: 1px solid #000;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  position: relative;
+}
+
+.brands div .span-brand::after {
+  content: "✓";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #3866df;
+  border: 1px solid #3866df;
+  border-radius: 2px;
+  border: none;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  z-index: 100;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  
+}
+.brands input[type="checkbox"] + .span-brand::after {
+  visibility: hidden;
+}
+.brands input[type="checkbox"]:checked + .span-brand::after {
+  visibility: visible;
+}
