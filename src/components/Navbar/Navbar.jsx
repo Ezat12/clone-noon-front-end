@@ -13,6 +13,8 @@ import axios from "axios";
 import { addWishlist } from "../../toolKit/wishlist/wishlistSlice";
 import { addCart } from "../../toolKit/cart/cartSlice";
 import { IoMdArrowDropup } from "react-icons/io";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -21,10 +23,39 @@ function Navbar() {
   const [search, setSearch] = useState("");
   const [dataSearch, setDataSearch] = useState([]);
 
-  console.log(dataSearch);
+  // console.log(dataSearch);
 
   useEffect(() => {
     const fetchData = async () => {
+      if (Cookies.get("auth-token")) {
+        try {
+          const responseInvalidToken = await axios.get(
+            `${import.meta.env.VITE_URL}/api/v1/user/getDataUser`,
+            {
+              headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` },
+            }
+          );
+
+        } catch (e) {
+          Swal.fire({
+            title: "error token!",
+            text: "Please Login again",
+            icon: "warning",
+            showCancelButton: false,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            // confirmButtonText: "Yes, delete it!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Cookies.remove("auth-token");
+              location.reload();
+              location.href = "/login";
+              // navigator("/login");
+            }
+          });
+        }
+      }
+
       // Push Wishlist User =============================
       const response = await axios.get(
         `${import.meta.env.VITE_URL}/api/v1/wishlist`,

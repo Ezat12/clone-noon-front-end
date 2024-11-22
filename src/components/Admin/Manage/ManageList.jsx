@@ -19,6 +19,8 @@ function ManageList() {
         navigator("/");
       }
     } catch (e) {
+      console.log(e);
+
       toast.error("You are not access the route");
       navigator("/");
     }

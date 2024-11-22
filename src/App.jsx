@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Pages/Home";
-import { Route, Routes } from "react-router-dom";
+import { Route, Router, Routes } from "react-router-dom";
 import LoginOrSignup from "./components/Pages/LoginOrSignup";
 import Wishlist from "./components/Pages/Wishlist";
 import Cart from "./components/Pages/Cart";
@@ -25,16 +25,21 @@ import AddImagesCategory from "./components/Admin/Add Images Category/AddImagesC
 import Product from "./components/Product/Product";
 import ShowProduct from "./components/Show Product/ShowProduct";
 import ForgetPassword from "./components/Forget Password/ForgetPassword";
-// import { ToastContainer } from "react-toastify";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import CashOrder from "./components/Order Cash/CashOrder";
+import CardOrder from "./components/Card Order/CardOrder";
+import Footer from "./components/Footer/Footer";
 
 function App() {
+  const excludePath = ["/login", "/account"];
+
   return (
     <Fragment>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+
+        <Route path="order-cash" element={<CashOrder />} />
+        <Route path="order-card" element={<CardOrder />} />
 
         <Route path="/login" element={<LoginOrSignup />} />
         <Route path="/login/*">
@@ -75,7 +80,7 @@ function App() {
           <Route path=":productId" element={<ShowProduct />} />
         </Route>
       </Routes>
-
+      <Footer />
       <ToastContainer />
     </Fragment>
   );

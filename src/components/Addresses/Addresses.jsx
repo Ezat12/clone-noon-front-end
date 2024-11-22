@@ -94,8 +94,8 @@ function Addresses() {
                 onChange={(e) => setAlias(e.target.value)}
                 className={
                   accept && !alias
-                    ? "border-red-600 border p-3 max-w-60 focus:outline-none  focus:ring-blue-500 focus:border-blue-500 focus:border-transparent rounded-md"
-                    : "border p-3 max-w-60 focus:outline-none  focus:ring-blue-500 focus:border-blue-500 focus:border-transparent rounded-md"
+                    ? "border-red-600 border p-3 max-w-60 focus:outline-none  focus:ring-blue-500 focus:border-blue-500  rounded-md"
+                    : "border p-3 max-w-60 focus:outline-none  focus:ring-blue-500 focus:border-blue-500  rounded-md"
                 }
                 type="text"
                 placeholder="write Alias (Ex:Home or work)"
@@ -106,8 +106,8 @@ function Addresses() {
                 placeholder="write details"
                 className={
                   accept && !details
-                    ? "mt-3 border-red-600 border p-3 max-w-80 focus:outline-none  focus:ring-blue-500 focus:border-blue-500 focus:border-transparent rounded-md"
-                    : "mt-3 border p-3 max-w-80 focus:outline-none  focus:ring-blue-500 focus:border-blue-500 focus:border-transparent rounded-md"
+                    ? "mt-3 border-red-600 border p-3 max-w-80 focus:outline-none  focus:ring-blue-500 focus:border-blue-500  rounded-md"
+                    : "mt-3 border p-3 max-w-80 focus:outline-none  focus:ring-blue-500 focus:border-blue-500 rounded-md"
                 }
               ></textarea>
               <div className="mt-3 max-w-80">

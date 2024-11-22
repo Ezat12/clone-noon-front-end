@@ -48,12 +48,12 @@ function SubCategories() {
           <ShimmerDiv width={"100%"} height={"350px"} mode={"light"} />
         </div>
       )}
-      {loading && (
+      {/*loading && (
         <div className="absolute top-0 left-0 w-full h-full z-10 bg-[#ffffffab]">
           {" "}
           <BeatLoader className="absolute top-[50%] left-[50%]" />
         </div>
-      )}
+      )*/}
       <SubCategoryItems state={subCategories} title={"Shop By Category"} />
       {loading && (
         <div className="w-full flex items-center justify-between px-5 -mt-2 pb-6">
@@ -101,6 +101,25 @@ function SubCategories() {
           Shop Now
         </span>
       </h1>
+      {loading && (
+        <div className="flex items-center justify-between px-6 bg-back_color py-4">
+          <div>
+            <ShimmerDiv mode="light" height={350} width={250} />
+          </div>
+          <div>
+            <ShimmerDiv mode="light" height={350} width={250} />
+          </div>
+          <div>
+            <ShimmerDiv mode="light" height={350} width={250} />
+          </div>
+          <div>
+            <ShimmerDiv mode="light" height={350} width={250} />
+          </div>
+          <div>
+            <ShimmerDiv mode="light" height={350} width={250} />
+          </div>
+        </div>
+      )}
       <div className="grid grid-cols-5 bg-back_color">
         {product.map((item, index) => {
           if (index >= 5) {

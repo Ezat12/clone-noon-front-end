@@ -11,6 +11,8 @@ import axios from "axios";
 import { BeatLoader } from "react-spinners";
 import Cookies from "js-cookie";
 import { userData } from "../../toolKit/user/userSlice";
+import { addWishlist } from "../../toolKit/wishlist/wishlistSlice";
+import { addCart } from "../../toolKit/cart/cartSlice";
 
 function LoginOrSignup() {
   const [Continue, setContinue] = useState("Login");
@@ -55,8 +57,31 @@ function LoginOrSignup() {
           Cookies.set("auth-token", token);
           dispatch(userData(response.data.data));
           navigator("/");
-          location.reload("/");
+          // location.reload("/");
         }
+
+        //  wishlist and cart
+
+        // Push Wishlist User =============================
+        const responseWishlist = await axios.get(
+          `${import.meta.env.VITE_URL}/api/v1/wishlist`,
+          { headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` } }
+        );
+        const wishlistUser = responseWishlist.data.wishlistUser;
+        wishlistUser.map((wishlist) => {
+          dispatch(addWishlist(wishlist));
+        });
+
+        // Push Cart User ==============================
+        const responseCart = await axios.get(
+          `${import.meta.env.VITE_URL}/api/v1/cart`,
+          { headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` } }
+        );
+
+        const cartUser = responseCart.data.data.cartItem;
+        cartUser.map((item) => {
+          dispatch(addCart(item));
+        });
       } catch (e) {
         setLoading(false);
         toast.error("incorrect email or password");
