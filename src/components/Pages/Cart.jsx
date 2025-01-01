@@ -85,7 +85,7 @@ function Cart() {
               !loading ? "grid grid-cols-3 gap-5" : "grid grid-cols-3 gap-5  "
             }
           >
-            <div className="cart-content col-span-2">
+            <div className="cart-content lg:col-span-2 col-span-3 md:col-span-3">
               <h1 className="text-3xl font-bold">
                 Cart
                 <span className="text-sm text-gray-500 ml-2 font-semibold">
@@ -98,7 +98,7 @@ function Cart() {
                 })}
               </div>
             </div>
-            <div className="order-summary p-5 border-[1px] h-fit rounded-lg ">
+            <div className="order-summary  lg:col-span-1 col-span-3 p-5 border-[1px] h-fit rounded-lg ">
               <div>
                 <h1 className="text-2xl font-bold mb-5">Order Summary</h1>
                 <div className="field flex items-center">
@@ -144,7 +144,7 @@ function Cart() {
             </div>
           </div>
           {checkout && (
-            <div className="check-out z-50 absolute top-0 left-0 w-full h-full flex justify-center bg-[#7777775e]">
+            <div className="check-out z-50 absolute top-0 left-0 w-full h-full flex  justify-center bg-[#7777775e]">
               <div className="relative p-5 mt-2 w-96 h-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                 <span
                   onClick={() => setCheckout(false)}

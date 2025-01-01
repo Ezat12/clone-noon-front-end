@@ -94,7 +94,7 @@ function CashOrder() {
                   onClick={handleAddresses}
                   key={index}
                   id={index}
-                  className="box mt-3 bg-gray-200 p-4 min-w-96 border-2"
+                  className="box mt-3 bg-gray-200 p-4 border-2"
                 >
                   <p className="font-semibold">
                     <span className="text-gray-500 mr-3">Alias:</span>{" "}

@@ -1,0 +1,9 @@
+@media (max-width: 1080px) {
+  .address .form {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .address .form .add-address {
+    border: none;
+  }
+}

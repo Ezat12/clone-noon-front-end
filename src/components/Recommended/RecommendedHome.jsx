@@ -31,9 +31,9 @@ function RecommendedHome() {
 
   return (
     <div className="recommended bg-back_color">
-      <div className="px-8 py-4">
+      <div className="px-2 md:px-8 lg:px-8 py-4">
         <h1 className="text-2xl font-semibold">Recommended For You</h1>
-        <div className="grid grid-cols-5 gap-3">
+        <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3">
           {selectedProducts.map((theRandom, index) => {
             return <Items key={index} product={theRandom} />;
           })}

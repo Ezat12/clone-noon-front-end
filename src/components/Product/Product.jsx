@@ -2,7 +2,7 @@
 import axios from "axios";
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import Items from "../ItemsProduct/Items.jsx";
 import { CiSquareMinus, CiSquarePlus } from "react-icons/ci";
@@ -11,9 +11,16 @@ import { toast } from "react-hot-toast";
 import Loading from "../Loading/Loading.jsx";
 import "./Product.css";
 import "react-toastify/dist/ReactToastify.css";
+import { TfiHome } from "react-icons/tfi";
+import { TbCategory2 } from "react-icons/tb";
+import { RiAccountPinBoxLine } from "react-icons/ri";
+import { FiShoppingCart } from "react-icons/fi";
+import Cookies from "js-cookie";
 
 function Product() {
   const { state } = useLocation();
+  console.log(state);
+
   const [loading, setLoading] = useState(true);
   const [sorted, setSorted] = useState("Recommended");
   const [dropDown, setDropDown] = useState(false);
@@ -31,6 +38,16 @@ function Product() {
   const [low, setLow] = useState();
   const [high, setHigh] = useState();
   const [goPrice, setGoPrice] = useState();
+
+  const navigator = useNavigate();
+
+  const clickMyAccount = () => {
+    if (Cookies.get("auth-token")) {
+      navigator("/account");
+    } else {
+      navigator("/login");
+    }
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -191,9 +208,34 @@ function Product() {
   return (
     <div className="product relative bg-[#f7f7fa]">
       {loading && <Loading />}
-      <div className="p-3">
-        <div className="result flex items-center justify-between p-2">
-          <h1 className="text-xl">
+      <div className="drop-show fixed bottom-0 left-0 shadow-inner bg-white p-5 w-full z-50 flex items-center justify-around hidden">
+        <div className="flex flex-col gap-2 items-center cursor-pointer ">
+          <TfiHome size={"20px"} />
+          <p onClick={() => navigator("/")} className="text-sm font-medium">
+            Home
+          </p>
+        </div>
+        <div className="flex flex-col gap-2 items-center cursor-pointer ">
+          <TbCategory2 size={"20px"} />
+          <p className="text-sm font-medium">SubCategory</p>
+        </div>
+        <div className="flex flex-col gap-2 items-center cursor-pointer ">
+          <RiAccountPinBoxLine size={"20px"} />
+          <p onClick={clickMyAccount} className="text-sm font-medium">
+            My Account
+          </p>
+        </div>
+        <div
+          onClick={() => navigator("/cart")}
+          className="flex flex-col gap-2 items-center cursor-pointer"
+        >
+          <FiShoppingCart size={"20px"} />
+          <p className="text-sm font-medium">cart</p>
+        </div>
+      </div>
+      <div className="p-0 md:p-3 lg:p-3">
+        <div className="result flex flex-wrap items-center justify-between p-2">
+          <h1 className="text-xl mb-7 lg:mb-0 md:mb-0">
             <span>{product.length}</span> Result for You
           </h1>
           <div
@@ -235,8 +277,8 @@ function Product() {
             )}
           </div>
         </div>
-        <div className="grid grid-cols-5 mt-5 px-2 gap-5">
-          <div className="content-left col-span-1">
+        <div className="content grid grid-cols-5 mt-5 px-2 gap-5">
+          <div className="content-left col-span-1 ">
             <div
               onClick={() => setDropCategory((drop) => !drop)}
               className="category flex items-center justify-between mt-3 cursor-pointer"
@@ -272,11 +314,7 @@ function Product() {
                                 <Link
                                   to={"/product"}
                                   state={sub}
-                                  onClick={
-                                    () => window.location.reload()
-                                    // setTimeout(() => {
-                                    // }, 200)
-                                  }
+                                  onClick={() => window.location.reload()}
                                   className="ml-12 cursor-pointer border-b-2 border-[#f7f7fa] hover:border-gray-300 "
                                 >
                                   {sub.name}
@@ -336,7 +374,7 @@ function Product() {
                 <FaChevronDown className="mt-2" />
               )}
             </div>
-            <div className="flex items-center gap-3 mt-6">
+            <div className="flex items-center gap-3 flex-wrap mt-6">
               <input
                 value={low}
                 name="low"
@@ -362,7 +400,7 @@ function Product() {
           </div>
 
           <div className="content-right col-span-4">
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid lg:grid-cols-4 grid-cols-1 md:grid-cols-3 gap-1 lg:gap-2 md:gap-2">
               {product.map((item, index) => {
                 if (showBrands.length === 0) {
                   return <Items key={index} product={item} />;

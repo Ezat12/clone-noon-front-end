@@ -97,7 +97,7 @@ function SubCategories() {
       )}
       <h1 className="px-8 py-4 text-2xl font-semibold bg-[#eff4f4] flex items-center justify-between">
         You May Like{" "}
-        <span className="bg-black text-white py-3 px-5 rounded-lg text-xl cursor-pointer">
+        <span className="bg-black text-white py-3 px-5 rounded-lg text-xl cursor-pointer hidden lg:inline md:inline">
           Shop Now
         </span>
       </h1>
@@ -120,7 +120,7 @@ function SubCategories() {
           </div>
         </div>
       )}
-      <div className="grid grid-cols-5 bg-back_color">
+      <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3 bg-back_color">
         {product.map((item, index) => {
           if (index >= 5) {
             return;

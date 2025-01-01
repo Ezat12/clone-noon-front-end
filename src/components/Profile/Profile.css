@@ -1,3 +1,9 @@
 .checked-input .gender div input:checked {
   background-color: red;
 }
+
+@media (max-width : 1200px) {
+  .profile .content-profile .form-info {
+    flex-wrap: wrap;
+  }
+}

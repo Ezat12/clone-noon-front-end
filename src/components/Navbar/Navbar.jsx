@@ -96,7 +96,7 @@ function Navbar() {
 
   return (
     <div className="navbar bg-main_color">
-      <div className="navbar-container p-3 flex items-center justify-between gap-4">
+      <div className="navbar-container p-3 flex items-center justify-between gap-4 flex-wrap">
         <Link to={"/"} className="logo cursor-pointer">
           <img src={logo} alt="" />
         </Link>
@@ -134,7 +134,7 @@ function Navbar() {
             </div>
           )}
         </div>
-        <ul className="flex items-center gap-5">
+        <ul className="ul-logo flex items-center gap-5">
           {!Cookies.get("auth-token") ? (
             <Link to={"/login"} className="li_link">
               <a>log in</a>

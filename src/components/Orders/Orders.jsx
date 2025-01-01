@@ -28,16 +28,20 @@ function Orders() {
       {loading && <Loading />}
       <ListAccount />
       <div className="p-8 bg-[#f3f4f8] flex-1">
+        <h1 className="text-2xl font-semibold">Orders</h1>
         {orders.length > 0 ? (
-          <div className="max-w-[600px]">
+          <div className="max-w-[600px] mt-6">
             <div className="flex flex-col gap-5">
               {orders.map((or, i) => {
                 return (
                   <div key={i} className="box p-4 bg-white">
-                    <p className="font-semibold">{or?.shippingAddress?.alias}</p>
+                    <p className="font-semibold">
+                      {or?.shippingAddress?.alias}
+                    </p>
                     <p className="font-semibold mt-1">
                       <span className="text-gray-500 mr-3">details:</span>{" "}
-                      {or?.shippingAddress?.city} ({or?.shippingAddress?.details})
+                      {or?.shippingAddress?.city} (
+                      {or?.shippingAddress?.details})
                     </p>
                     <div className="flex items-center mt-1">
                       <span className="text-gray-500  mr-3">phone:</span>

@@ -1,0 +1,34 @@
+
+.brands-items {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr)); /* Default grid */
+  gap: 1rem;
+}
+
+@media (max-width: 990px) {
+  .brands-items {
+    display: flex; 
+    gap: 1rem;
+    overflow-x: scroll; 
+    padding-bottom: 1rem; 
+    /* scroll-behavior: auto; */
+  }
+
+  .brands-items a  {
+    flex-shrink: 0; 
+    width: 160px; 
+  }
+
+  .brands-items::-webkit-scrollbar {
+    height: 8px; 
+  }
+
+  .brands-items::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5); 
+    border-radius: 10px; 
+  }
+
+  .brands-items::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); 
+  }
+}

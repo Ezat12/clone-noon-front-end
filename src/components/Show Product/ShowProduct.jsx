@@ -195,6 +195,7 @@ function ShowProduct() {
       success: {
         render() {
           setChange("Success Deleted");
+          setWishList((wish) => !wish);
           return "Success Deleted";
         },
       },
@@ -312,8 +313,8 @@ function ShowProduct() {
 
   return (
     <div className="show-product  ">
-      <div className="grid grid-cols-3 p-8 gap-3 items-start border-b-[1px] pb-6">
-        <div className="images col-span-1 flex gap-5">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 p-8 gap-3 items-start border-b-[1px] pb-6">
+        <div className="images lg:col-span-1 md:col-span-1 col-span-1 flex gap-5">
           <div className="flex flex-col gap-3 items-center justify-center">
             <div
               onClick={() => handleImgCover(product.imgCover)}
@@ -339,7 +340,7 @@ function ShowProduct() {
             </div>
           </div>
         </div>
-        <div className="content col-span-1 border-r-[1px] pr-4">
+        <div className="content lg:col-span-1 md:col-span-1 col-span-1 border-r-[1px] pr-4">
           <div>
             <span className="block font-semibold text-xl text-gray-500 capitalize">
               {product.title}
@@ -395,7 +396,7 @@ function ShowProduct() {
             </ul>
           </div>
         </div>
-        <div className="add-card">
+        <div className="add-card lg:col-span-1 ">
           <ul className="rounded-lg shadow-md p-5 flex flex-col gap-7 ">
             <li className="flex gap-3">
               <img src={free_returns_usp} />
@@ -432,7 +433,7 @@ function ShowProduct() {
               className="relative quantity p-3 border-[1px] rounded-md flex gap-1 items-center justify-center  text-gray-600 font-semibold"
             >
               <span className="pr-4 border-r-[1px]">{quantity}</span>
-              <div className="quantity-scroll flex flex-col  absolute top-16 shadow-2xl max-h-72 overflow-auto ">
+              <div className="quantity-scroll flex flex-col bg-white  absolute z-50 top-16 shadow-2xl max-h-72 overflow-auto ">
                 {dropQuantity &&
                   quantityList.map((q, i) => {
                     return (
@@ -493,7 +494,7 @@ function ShowProduct() {
         </h1>
         <div className="grid grid-cols-3 ">
           {product.ratingQuantity > 0 ? (
-            <div className="col-span-1">
+            <div className="col-span-3 lg:col-span-1 md:col-span-1">
               <div className="mt-5">
                 <h1 className="text-xl font-semibold text-gray-600">
                   Overall Rating
@@ -521,7 +522,7 @@ function ShowProduct() {
               </p>
             </div>
           )}
-          <div className="col-span-2">
+          <div className="col-span-3 lg:col-span-2 md:col-span-2">
             <div className="mt-5 pb-3 border-b-[1px] border-collapse">
               <div className="name flex mt-3 gap-2 flex-col">
                 <span className="text-sm text-gray-600 font-semibold">
@@ -540,11 +541,11 @@ function ShowProduct() {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Write comment"
-                  className="p-2 border-2 outline-none w-96 rounded-md mt-3"
+                  className="p-2 border-2 outline-none w-72 lg:w-96 md:w-96 rounded-md mt-3"
                 />
                 <button
                   onClick={addRating}
-                  className="text-white bg-blue-600 rounded-md py-2 px-3 ml-3 font-semibold"
+                  className="text-white bg-blue-600 rounded-md py-2 px-3 ml-3 font-semibold mt-3 lg:mt-0 md:mt-0"
                 >
                   Add Rating
                 </button>
@@ -555,7 +556,7 @@ function ShowProduct() {
                 return (
                   <div
                     key={index}
-                    className="comment flex justify-between pb-3 border-b-[1px]"
+                    className="coment flex justify-between pb-3 border-b-[1px]"
                   >
                     <div className="content-review">
                       <div className="flex gap-2 items-center">
@@ -576,7 +577,7 @@ function ShowProduct() {
                           <IoMdMore color="#727272" className="text-3xl " />
                         </div>
                         {dropReview && (
-                          <div className="absolute right-0 mt-2 rounded-md bg-[#cccccc61]">
+                          <div className="absolute  z-50 right-0 mt-2 rounded-md bg-[#cccccc61]">
                             <div
                               onClick={() => deleteReview(rat._id)}
                               className="p-2 px-6 cursor-pointer font-semibold text-red-600 hover:bg-red-600 hover:text-white"
@@ -598,7 +599,7 @@ function ShowProduct() {
         <h1 className="font-bold px-4 text-2xl my-4">
           Products related to this
         </h1>
-        <div className="grid grid-cols-5">
+        <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3">
           {allProduct.map((p, index) => {
             if (index < 5) {
               return <Items key={index} product={p} />;

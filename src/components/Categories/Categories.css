@@ -1,0 +1,12 @@
+@media (max-width: 660px) {
+  .categories {
+    padding: 10px 10px 10px 20px;
+  }
+  .categories .image-category {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .categories .image-category a {
+    text-align: center;
+  }
+}

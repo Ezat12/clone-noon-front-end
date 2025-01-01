@@ -5,6 +5,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { HashLoader } from "react-spinners";
 import Loading from "../Loading/Loading";
+import "./Addresses.css";
 
 function Addresses() {
   const [addresses, setAddresses] = useState([]);
@@ -81,11 +82,12 @@ function Addresses() {
   };
 
   return (
-    <div className="address flex relative">
+    <div className="flex relative">
       <ListAccount />
       {loadingPage && <Loading />}
-      <div className="p-8 bg-[#f3f4f8] flex-1">
-        <div className="p-5 bg-white flex gap-4">
+      <div className="address p-8 bg-[#f3f4f8] flex-1">
+        <h1 className="text-2xl font-semibold">Addresses</h1>
+        <div className="form p-5 bg-white flex gap-4 mt-6">
           <div className="add-address border-r-2 pr-5">
             <h1 className="text-xl font-semibold">Add New Address</h1>
             <div className="field mt-5 flex flex-col">
@@ -184,7 +186,7 @@ function Addresses() {
                   return (
                     <div
                       key={index}
-                      className="box mt-3 bg-gray-200 p-4 min-w-96"
+                      className="box mt-3 bg-gray-200 p-4 w-auto"
                     >
                       <p className="font-semibold">
                         <span className="text-gray-500 mr-3">Alias:</span>{" "}

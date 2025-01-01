@@ -42,3 +42,18 @@
 .navbar .navbar-container ul .li_link .icons {
   color: #777;
 }
+
+@media (max-width: 770px) {
+  .navbar .navbar-container .logo img {
+    width: 100px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 660px) {
+  .navbar .navbar-container .ul-logo {
+    margin: 10px auto;
+    /* display: grid; */
+    /* grid-template-columns: 80px 200px auto; */
+  }
+}

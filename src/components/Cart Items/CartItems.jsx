@@ -91,9 +91,9 @@ function CartItems(props) {
           <img className="w-40" src={product.product.imgCover} />
         </div>
         <div className="content-product flex-1">
-          <div className="flex justify-between gap-5">
+          <div className="flex justify-between flex-wrap gap-5">
             <div className="">
-              <p className="font-semibold mb-2 max-w-[550px]">
+              <p className="font-semibold mb-2 max-w-[550px] max-h-[100px] overflow-hidden">
                 {product.product.description}
               </p>
               <span className="text-sm text-gray-500">Order in 15 h 36 m</span>

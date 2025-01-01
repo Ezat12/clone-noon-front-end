@@ -1,20 +1,20 @@
-import React from 'react'
-import img_1 from "../../assets/Wrapper/1.avif"
-import img_2 from "../../assets/Wrapper/2.avif"
-import img_3 from "../../assets/Wrapper/3.avif"
-import img_4 from "../../assets/Wrapper/4.avif"
-import img_5 from "../../assets/Wrapper/5.avif"
-import img_6 from "../../assets/Wrapper/6.avif"
-import img_7 from "../../assets/Wrapper/7.avif"
-import img_8 from "../../assets/Wrapper/8.avif"
-import img_9 from "../../assets/Wrapper/9.avif"
-import img_10 from "../../assets/Wrapper/10.avif"
+import React from "react";
+import img_1 from "../../assets/Wrapper/1.avif";
+import img_2 from "../../assets/Wrapper/2.avif";
+import img_3 from "../../assets/Wrapper/3.avif";
+import img_4 from "../../assets/Wrapper/4.avif";
+import img_5 from "../../assets/Wrapper/5.avif";
+import img_6 from "../../assets/Wrapper/6.avif";
+import img_7 from "../../assets/Wrapper/7.avif";
+import img_8 from "../../assets/Wrapper/8.avif";
+import img_9 from "../../assets/Wrapper/9.avif";
+import img_10 from "../../assets/Wrapper/10.avif";
 
 function Wrapper() {
   return (
     <div className="wrapper bg-back_color">
-      <div className="px-8 py-4">
-        <div className="grid grid-cols-3 gap-2 ">
+      <div className="px-2 md:px-8 lg:px-8 py-4">
+        <div className="grid grid-cols-1 gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
           <div className="more-reasons p-4 bg-white ">
             <h1 className="text-2xl font-semibold">More reasons to shop</h1>
             <div className="grid grid-cols-2 gap-3 mt-3">
@@ -36,63 +36,63 @@ function Wrapper() {
             <h1 className="text-2xl font-semibold">Mega deals</h1>
             <div className="grid grid-cols-2 gap-3 mt-3">
               <div className="relative">
-                <p className="absolute overflow-hidden bg-main_color text-red-600 text-[12px] font-bold right-0 p-1 rounded-md">
+                <p className="absolute overflow-hidden bg-main_color text-red-600 text-[10px] font-bold right-0 p-1 rounded-md">
                   Fashion deals
                 </p>
                 <div className="image bg-white flex items-center justify-center rounded-md">
                   <img className="w-[100px]" src={img_5} alt="" />
                 </div>
                 <div className="content bg-back_color p-2">
-                  <span className="text-[15px]">Footwear & bags</span>
-                  <h2 className=" font-bold">Up to 80% off</h2>
+                  <span className="text-sm">Footwear & bags</span>
+                  <h2 className=" font-medium">Up to 80% off</h2>
                 </div>
               </div>
               <div className="relative">
-                <p className="absolute overflow-hidden bg-main_color text-red-600 text-[12px] font-bold right-0 p-1 rounded-md">
+                <p className="absolute overflow-hidden bg-main_color text-red-600 text-[10px] font-bold right-0 p-1 rounded-md">
                   Babu deals
                 </p>
                 <div className="image bg-white flex items-center justify-center rounded-md">
                   <img className="w-[100px]" src={img_6} alt="" />
                 </div>
                 <div className="content bg-back_color p-2">
-                  <span className="text-[15px]">Bath & shin care</span>
-                  <h2 className=" font-bold">Up to 35% off</h2>
+                  <span className="text-sm">Bath & shin care</span>
+                  <h2 className=" font-medium">Up to 35% off</h2>
                 </div>
               </div>
               <div className="relative">
-                <p className="absolute overflow-hidden bg-main_color text-red-600 text-[12px] font-bold right-0 p-1 rounded-md">
+                <p className="absolute overflow-hidden bg-main_color text-red-600 text-[10px] font-bold right-0 p-1 rounded-md">
                   Gaming deals
                 </p>
                 <div className="image bg-white flex items-center justify-center rounded-md">
                   <img className="w-[100px]" src={img_7} alt="" />
                 </div>
                 <div className="content bg-back_color p-2">
-                  <span className="text-[15px]">Sony Playstation 5slim</span>
-                  <h2 className=" font-bold">Up to 10% off</h2>
+                  <span className="text-sm">Sony Playstation 5slim</span>
+                  <h2 className=" font-medium">Up to 10% off</h2>
                 </div>
               </div>
               <div className="relative">
-                <p className="absolute overflow-hidden bg-main_color text-red-600 text-[12px] font-bold right-0 p-1 rounded-md">
+                <p className="absolute overflow-hidden bg-main_color text-red-600 text-[10px] font-bold right-0 p-1 rounded-md">
                   Fashion deals
                 </p>
                 <div className="image bg-white flex items-center justify-center rounded-md">
                   <img className="w-[100px]" src={img_8} alt="" />
                 </div>
                 <div className="content bg-back_color p-2">
-                  <span className="text-[15px]">code:sport20</span>
-                  <h2 className=" font-bold">By 2, get 20% off</h2>
+                  <span className="text-sm">code:sport20</span>
+                  <h2 className=" font-medium">By 2, get 20% off</h2>
                 </div>
               </div>
             </div>
           </div>
-          <div className="in-focus bg-white p-4">
+          <div className="in-focus bg-white p-4 lg:block hidden">
             <h1 className="text-2xl font-semibold">In Focus</h1>
-            <div className='flex flex-col gap-3 mt-2'>
-              <div className='rounded-lg'>
-                <img className='w-full' src={img_9} />
+            <div className="flex flex-col gap-3 mt-2">
+              <div className="rounded-lg">
+                <img className="w-full" src={img_9} />
               </div>
-              <div className='rounded-lg'>
-                <img className='w-full' src={img_10} />
+              <div className="rounded-lg">
+                <img className="w-full" src={img_10} />
               </div>
             </div>
           </div>
@@ -102,4 +102,4 @@ function Wrapper() {
   );
 }
 
-export default Wrapper
+export default Wrapper;

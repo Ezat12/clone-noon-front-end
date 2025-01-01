@@ -164,14 +164,14 @@ function Items(props) {
           >
             <img className="" src={product.imgCover} />
           </Link>
-          <div className="bg-white rounded-lg shadow-lg flex items-center justify-center p-2 absolute  text-gray-500 top-2 right-2 text-xl cursor-pointer">
+          <div className="bg-white rounded-lg shadow-lg flex items-center justify-center p-2 absolute  text-gray-500 top-2 right-2  cursor-pointer lg:text-xl md:text-xl  text-sm">
             {!wishList ? (
               <FaRegHeart onClick={handleWishListAdd} />
             ) : (
               <FaHeart color="red" onClick={handleWishListDelete} />
             )}
           </div>
-          <div className="bg-white rounded-lg shadow-lg flex items-center justify-center p-2 absolute text-gray-500 bottom-2 right-2 text-2xl cursor-pointer">
+          <div className="bg-white rounded-lg shadow-lg flex items-center justify-center p-2 absolute text-gray-500 bottom-2 right-2 cursor-pointer lg:text-2xl md:text-2xl  text-sm">
             {!cart ? (
               <LiaCartPlusSolid onClick={handleCartAdd} />
             ) : (

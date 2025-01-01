@@ -146,11 +146,11 @@ function Profile() {
           <BeatLoader className="absolute top-[50%] left-[50%]" />
         </div>
       )}
-      <div className="bg-[#f3f4f8] w-full p-5">
-        <div className="w-full"></div>
-        <div className="bg-white p-6 ">
+      <div className="profile bg-[#f3f4f8] w-full p-5">
+        {/*<div className="w-full"></div>*/}
+        <div className="content-profile bg-white p-6 ">
           <h1 className="text-lg font-semibold">Profile Info</h1>
-          <form className="flex items-center gap-6 mt-6">
+          <form className="form-name flex flex-wrap items-center gap-6 mt-6">
             <div className="flex flex-col gap-2 min-w-64">
               <label htmlFor="email">Email</label>
               <input
@@ -173,7 +173,7 @@ function Profile() {
               />
             </div>
           </form>
-          <form className="flex items-center gap-6 mt-6">
+          <form className="form-info flex items-center gap-6 mt-6">
             <div className="flex flex-col gap-2 min-w-64">
               <label htmlFor="Phone">Phone number</label>
               <PhoneInput

@@ -23,7 +23,7 @@ function Electronics() {
   }, []);
 
   return (
-    <div className="electronics bg- mt-5 px-5">
+    <div className="electronics bg- mt-5 px-2 md:px-5 lg:px-5">
       {loading && (
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold mb-4">Electronics</h1>
@@ -74,7 +74,7 @@ function Electronics() {
           <div className="mt-7">
             <SubCategoryItems state={subCategory} title={"Electronics"} />
           </div>
-          <div className="grid grid-cols-5 gap-3 bg-[#f5f5f5]">
+          <div className="bg-[#f5f5f5] grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3">
             {product.map((theRandom, index) => {
               return <Items key={index} product={theRandom} />;
             })}

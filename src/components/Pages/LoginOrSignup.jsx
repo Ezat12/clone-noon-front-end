@@ -179,7 +179,7 @@ function LoginOrSignup() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div className="field-password flex gap-3">
+            <div className="field-password flex gap-3 flex-wrap">
               <div className="flex-[50%] flex gap-1 flex-col">
                 <label htmlFor="password">Password:</label>
                 <input
@@ -264,7 +264,7 @@ function LoginOrSignup() {
             </Link>
           </div>
         </div>
-        <div className="image">
+        <div className="image hidden lg:visible">
           <img className="w-[500px]" src={login_img} alt="" />
         </div>
       </div>

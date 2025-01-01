@@ -22,3 +22,12 @@ ul a:hover .right-alt {
 ul a:hover div span {
   color: black;
 }
+
+@media(max-width : 950px) {
+  .list-account .list {
+    display: none;
+  }
+  .list-account .list-icon {
+    display: flex;
+  }
+}

@@ -95,7 +95,7 @@ function Setting() {
           <div className="bg-white p-5 mt-6">
             <h2 className="text-lg font-semibold">Security</h2>
             <label className="text-gray-600 mt-4 block">Password</label>
-            <div className="flex gap-4 mt-2">
+            <div className="flex flex-wrap gap-4 mt-2">
               <input
                 className="cursor-no-drop p-3 border-[1px] outline-none"
                 value={"**************"}
