@@ -6,6 +6,8 @@ import Cookies from "js-cookie";
 import { HashLoader } from "react-spinners";
 import Loading from "../Loading/Loading";
 import "./Addresses.css";
+import toast from "react-hot-toast";
+import { MdDelete } from "react-icons/md";
 
 function Addresses() {
   const [addresses, setAddresses] = useState([]);
@@ -66,18 +68,37 @@ function Addresses() {
         phone,
         city: selectedCity.label,
       };
+      try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_URL}/api/v1/addresses`,
+          data,
+          {
+            headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` },
+          }
+        );
+        const addresses = response.data.data.addresses;
+        setAddresses(addresses);
+        setLoadingButton(false);
+        toast.success("success add address");
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
 
-      const response = await axios.post(
-        `${import.meta.env.VITE_URL}/api/v1/addresses`,
-        data,
-        {
-          headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` },
-        }
+  const deleteAddress = async (id) => {
+    try {
+      const response = await axios.delete(
+        `${import.meta.env.VITE_URL}/api/v1/addresses/${id}`,
+        { headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` } }
       );
-
-      const addresses = response.data.data.addresses;
-      setAddresses(addresses);
-      setLoadingButton(false);
+      toast.success("success deleted address")
+      setAddresses(response.data.data.addresses)
+      console.log(response);
+      
+    } catch (e) {
+      console.log(e);
+      toast.error("something error!");
     }
   };
 
@@ -186,8 +207,14 @@ function Addresses() {
                   return (
                     <div
                       key={index}
-                      className="box mt-3 bg-gray-200 p-4 w-auto"
+                      className="box mt-3 bg-gray-200 p-4 w-auto relative"
                     >
+                      <span
+                        onClick={() => deleteAddress(add._id)}
+                        className="absolute top-3 right-4 cursor-pointer"
+                      >
+                        <MdDelete size={"20px"} color="#ff0200c2" />
+                      </span>
                       <p className="font-semibold">
                         <span className="text-gray-500 mr-3">Alias:</span>{" "}
                         {add.alias}

@@ -23,8 +23,6 @@ function Navbar() {
   const [search, setSearch] = useState("");
   const [dataSearch, setDataSearch] = useState([]);
 
-  // console.log(dataSearch);
-
   useEffect(() => {
     const fetchData = async () => {
       if (Cookies.get("auth-token")) {

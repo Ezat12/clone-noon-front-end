@@ -19,7 +19,6 @@ function CartItems(props) {
   const [quantity, setQuantity] = useState(product.quantity);
   const [loading, setLoading] = useState(false);
   const cartUser = useSelector((state) => state.cart);
-  console.log(cartUser);
 
   const [dropQuantity, setDropQuantity] = useState(false);
   const dispatch = useDispatch();

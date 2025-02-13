@@ -15,7 +15,9 @@ import { TfiHome } from "react-icons/tfi";
 import { TbCategory2 } from "react-icons/tb";
 import { RiAccountPinBoxLine } from "react-icons/ri";
 import { FiShoppingCart } from "react-icons/fi";
+import { MdArrowDropUp } from "react-icons/md";
 import Cookies from "js-cookie";
+import Scroll from "../Scroll/Scroll.jsx";
 
 function Product() {
   const { state } = useLocation();
@@ -38,6 +40,10 @@ function Product() {
   const [low, setLow] = useState();
   const [high, setHigh] = useState();
   const [goPrice, setGoPrice] = useState();
+
+  console.log(subCategory);
+
+  const [dropSubCategory, setDropSubCategory] = useState(false);
 
   const navigator = useNavigate();
 
@@ -207,17 +213,51 @@ function Product() {
 
   return (
     <div className="product relative bg-[#f7f7fa]">
+      <Scroll />
       {loading && <Loading />}
-      <div className="drop-show fixed bottom-0 left-0 shadow-inner bg-white p-5 w-full z-50 flex items-center justify-around hidden">
+      <div className="drop-show fixed bottom-0 left-0 shadow-inner bg-white p-5 w-full z-50 items-center justify-around hidden">
         <div className="flex flex-col gap-2 items-center cursor-pointer ">
           <TfiHome size={"20px"} />
           <p onClick={() => navigator("/")} className="text-sm font-medium">
             Home
           </p>
         </div>
-        <div className="flex flex-col gap-2 items-center cursor-pointer ">
-          <TbCategory2 size={"20px"} />
-          <p className="text-sm font-medium">SubCategory</p>
+        <div className="relative">
+          {dropSubCategory && (
+            <div
+              className={`absolute bottom-16 right-0 flex flex-col bg-white w-48 rounded-md shadow-lg transform transition-transform duration-300 ${
+                dropCategory
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-4 opacity-0"
+              }`}
+            >
+              {subCategory.map((sub, index) => {
+                if (sub.category === state.category) {
+                  return (
+                    <Link
+                      key={index}
+                      to={"/product"}
+                      state={sub}
+                      onClick={() => window.location.reload()}
+                      className="px-6 py-2 transform duration-100 hover:text-white hover:bg-blue-500 cursor-pointer"
+                    >
+                      {sub.name}
+                    </Link>
+                  );
+                }
+              })}
+            </div>
+          )}
+          <div
+            onClick={() => setDropSubCategory(!dropSubCategory)}
+            className="flex flex-col gap-2 items-center cursor-pointer"
+          >
+            <div className="flex items-center gap-2">
+              <TbCategory2 size={"20px"} />
+              <MdArrowDropUp size={"20px"} />
+            </div>
+            <p className="text-sm font-medium">SubCategory</p>
+          </div>
         </div>
         <div className="flex flex-col gap-2 items-center cursor-pointer ">
           <RiAccountPinBoxLine size={"20px"} />

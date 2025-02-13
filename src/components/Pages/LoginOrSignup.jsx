@@ -32,6 +32,8 @@ function LoginOrSignup() {
       toast.error("You are login Already");
       navigator("/");
     }
+
+    window.scroll({ top: 0, behavior: "smooth" });
   }, []);
 
   // Click Login   ###################
@@ -143,7 +145,7 @@ function LoginOrSignup() {
         </div>
       )}
       <div className="content flex items-center justify-around">
-        <div className="field m-11 p-5 shadow-lg w-[500px]">
+        <div className="field m-3 md:m-11 lg:m-11 p-4 shadow-lg w-[500px]">
           <h1 className="font-bold text-4xl text-start my-6">{Continue}</h1>
           <form className="flex flex-col gap-2">
             {Continue === "Sign Up" && (

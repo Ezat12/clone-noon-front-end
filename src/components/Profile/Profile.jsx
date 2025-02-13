@@ -10,31 +10,44 @@ import { toast } from "react-toastify";
 import { BeatLoader } from "react-spinners";
 
 function Profile() {
-  // Fetch Date ===========
+  
+  const [dataUser, setDataUser] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState({
+    name: "",
+    gender: "",
+    birthday: "",
+  });
+
   const fetchData = async () => {
-    const response = await axios.get(
-      `${import.meta.env.VITE_URL}/api/v1/user/getDataUser`,
-      { headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` } }
-    );
-    setDataUser(response.data.data);
-    setLoading(false);
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_URL}/api/v1/user/getDataUser`,
+        { headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` } }
+      );
+      setDataUser(response.data.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const [dataUser, setDataUser] = useState({});
-  const [loading, setLoading] = useState(true);
-
-  const [data, setData] = useState({
-    name: dataUser.name,
-    gender: dataUser.gender,
-    birthday: dataUser.birthday,
-  });
+  useEffect(() => {
+    if (dataUser) {
+      setData({
+        name: dataUser.name || "",
+        gender: dataUser.gender || "",
+        birthday: dataUser.birthday || "",
+      });
+    }
+  }, [dataUser]); 
 
   const [phone, setPhone] = useState(dataUser.phone);
-
   const [change, setChange] = useState(false);
 
   // Handle Gender ==========
@@ -146,7 +159,7 @@ function Profile() {
           <BeatLoader className="absolute top-[50%] left-[50%]" />
         </div>
       )}
-      <div className="profile bg-[#f3f4f8] w-full p-5">
+      <div className="profile bg-[#f3f4f8] w-full p-4">
         {/*<div className="w-full"></div>*/}
         <div className="content-profile bg-white p-6 ">
           <h1 className="text-lg font-semibold">Profile Info</h1>
@@ -197,7 +210,7 @@ function Profile() {
                 type="date"
                 id="Birthday"
                 name="birthday"
-                value={data.birthday}
+                value={data?.birthday?.split("T")[0]}
                 onChange={handleChange}
               />
             </div>

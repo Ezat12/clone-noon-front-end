@@ -105,10 +105,10 @@ function ListAccount() {
             </MenuItem>
             <MenuItem>
               <button
-                onClick={() => navigator("/account/setting")}
+                onClick={clickSignOut}
                 className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-red-500 data-[focus]:text-white"
               >
-                Logout
+                Sign Out
               </button>
             </MenuItem>
           </MenuItems>
