@@ -8,6 +8,7 @@ import Loading from "../Loading/Loading";
 import "./Addresses.css";
 import toast from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
+import Swal from "sweetalert2";
 
 function Addresses() {
   const [addresses, setAddresses] = useState([]);
@@ -34,12 +35,31 @@ function Addresses() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        `${import.meta.env.VITE_URL}/api/v1/addresses`,
-        { headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` } }
-      );
-      setAddresses(response.data.data);
-      setLoadingPage(false);
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_URL}/api/v1/addresses`,
+          { headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` } }
+        );
+        setAddresses(response.data.data);
+        setLoadingPage(false);
+      } catch (e) {
+        Swal.fire({
+          title: "error token!",
+          text: "Please Login again",
+          icon: "warning",
+          showCancelButton: false,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          // confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Cookies.remove("auth-token");
+            location.reload();
+            location.href = "/login";
+            // navigator("/login");
+          }
+        });
+      }
     };
 
     fetchData();
@@ -81,7 +101,7 @@ function Addresses() {
         setLoadingButton(false);
         toast.success("success add address");
       } catch (e) {
-        console.log(e);
+        toast.error("something error");
       }
     }
   };
@@ -92,12 +112,9 @@ function Addresses() {
         `${import.meta.env.VITE_URL}/api/v1/addresses/${id}`,
         { headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` } }
       );
-      toast.success("success deleted address")
-      setAddresses(response.data.data.addresses)
-      console.log(response);
-      
+      toast.success("success deleted address");
+      setAddresses(response.data.data.addresses);
     } catch (e) {
-      console.log(e);
       toast.error("something error!");
     }
   };

@@ -113,7 +113,7 @@ function Setting() {
         </div>
       </div>
       {change && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30">
           <div className="bg-white w-96 p-6 rounded-lg shadow-lg relative">
             <h2 className="text-lg font-semibold mb-4">Change password</h2>
 

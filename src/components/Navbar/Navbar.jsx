@@ -33,7 +33,6 @@ function Navbar() {
               headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` },
             }
           );
-
         } catch (e) {
           Swal.fire({
             title: "error token!",

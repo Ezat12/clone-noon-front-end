@@ -21,8 +21,6 @@ import Scroll from "../Scroll/Scroll.jsx";
 
 function Product() {
   const { state } = useLocation();
-  console.log(state);
-
   const [loading, setLoading] = useState(true);
   const [sorted, setSorted] = useState("Recommended");
   const [dropDown, setDropDown] = useState(false);
@@ -40,8 +38,6 @@ function Product() {
   const [low, setLow] = useState();
   const [high, setHigh] = useState();
   const [goPrice, setGoPrice] = useState();
-
-  console.log(subCategory);
 
   const [dropSubCategory, setDropSubCategory] = useState(false);
 
@@ -202,7 +198,6 @@ function Product() {
   };
 
   const handlePriceGoFetch = () => {
-    // console.log("Yes");
 
     if (low > high) {
       toast.error("Invalid Price");

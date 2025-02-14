@@ -142,7 +142,6 @@ function Profile() {
           // location.reload();
           setChange(false);
         } catch (e) {
-          // console.log(e);
 
           toast.error("Invalid phone");
         }

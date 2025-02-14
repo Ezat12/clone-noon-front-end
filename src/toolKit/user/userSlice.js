@@ -18,7 +18,6 @@ export const userSlice = createSlice({
       state.email = action.payload.email;
       state.role = action.payload.role;
       state.active = action.payload.active;
-      console.log(state);
     },
   },
 });

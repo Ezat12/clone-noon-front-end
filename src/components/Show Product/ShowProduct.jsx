@@ -28,6 +28,7 @@ import {
   deleteWishlist,
 } from "../../toolKit/wishlist/wishlistSlice";
 import { addCart } from "../../toolKit/cart/cartSlice";
+import Swal from "sweetalert2";
 
 function ShowProduct() {
   const { state } = useLocation();
@@ -44,8 +45,6 @@ function ShowProduct() {
   const [dropReview, setDropReview] = useState(false);
   const [wishList, setWishList] = useState(true);
   const [wishlistData, setWishlistData] = useState([]);
-  // const [addCart, setAddCart] = useState(true);
-  console.log(quantity);
 
   const cartUser = useSelector((state) => state.cart);
 
@@ -86,12 +85,29 @@ function ShowProduct() {
 
       /// Get User if Login ==========================
       if (Cookies.get("auth-token")) {
-        const responseUser = await axios.get(
-          `${import.meta.env.VITE_URL}/api/v1/user/getDataUser`,
-          {
-            headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` },
-          }
-        );
+        try {
+          const responseUser = await axios.get(
+            `${import.meta.env.VITE_URL}/api/v1/user/getDataUser`,
+            {
+              headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` },
+            }
+          );
+        } catch (e) {
+          Swal.fire({
+            title: "error token!",
+            text: "Please Login again",
+            icon: "warning",
+            showCancelButton: false,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Cookies.remove("auth-token");
+              location.reload();
+              location.href = "/login";
+            }
+          });
+        }
         const responseWishList = await axios.get(
           `${import.meta.env.VITE_URL}/api/v1/wishlist`,
           { headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` } }
@@ -158,11 +174,13 @@ function ShowProduct() {
         title,
         user: user._id,
       };
-      const response = axios.post(
-        `${import.meta.env.VITE_URL}/api/v1/reviews`,
-        data,
-        { headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` } }
-      );
+      const response = axios
+        .post(`${import.meta.env.VITE_URL}/api/v1/reviews`, data, {
+          headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` },
+        })
+        .catch((e) => {
+          // console.log(e);
+        });
 
       toast.promise(response, {
         pending: "Waiting...",
@@ -264,7 +282,6 @@ function ShowProduct() {
             headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` },
           })
           .then((res) => {
-            console.log(res);
             res.data.data.cartItem.map((item) => {
               if (item.product._id === product._id) {
                 idItem = item._id;
@@ -272,7 +289,7 @@ function ShowProduct() {
             });
 
             if (Number(quantity) > 1) {
-              // console.log(responseQuantity);
+              // (responseQuantity);
             } else {
               res.data.data.cartItem.map((item) => {
                 dispatch(addCart(item));
