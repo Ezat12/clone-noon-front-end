@@ -144,7 +144,7 @@ function Cart() {
             </div>
           </div>
           {checkout && (
-            <div className="check-out z-50 absolute top-0 left-0 w-full h-full flex  justify-center bg-[#7777775e]">
+            <div className="check-out z-50 fixed top-0 left-0 w-full h-full flex  justify-center bg-[#7777775e]">
               <div className="relative p-5 mt-2 w-96 h-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                 <span
                   onClick={() => setCheckout(false)}

@@ -85,8 +85,9 @@ function ShowProduct() {
 
       /// Get User if Login ==========================
       if (Cookies.get("auth-token")) {
+        let responseUser;
         try {
-          const responseUser = await axios.get(
+          responseUser = await axios.get(
             `${import.meta.env.VITE_URL}/api/v1/user/getDataUser`,
             {
               headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` },
@@ -174,24 +175,32 @@ function ShowProduct() {
         title,
         user: user._id,
       };
-      const response = axios
-        .post(`${import.meta.env.VITE_URL}/api/v1/reviews`, data, {
+      const response = axios.post(
+        `${import.meta.env.VITE_URL}/api/v1/reviews`,
+        data,
+        {
           headers: { Authorization: `Bearer ${Cookies.get("auth-token")}` },
-        })
-        .catch((e) => {
-          // console.log(e);
-        });
+        }
+      );
+      // .catch((e) => {
+      //   // console.log(e);
+      //   console.log(e);
+      // });
 
       toast.promise(response, {
         pending: "Waiting...",
         success: {
           render() {
             setChange("Success Add");
+            setRating(0);
+            setTitle("");
             return "Success Add";
           },
         },
         error: {
           render() {
+            setRating(0);
+            setTitle("");
             return "You have already created a rating";
           },
         },
