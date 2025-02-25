@@ -38,15 +38,15 @@ function Orders() {
                     <p className="font-semibold">
                       {or?.shippingAddress?.alias}
                     </p>
-                    <p className="font-semibold mt-1">
+                    {/*<p className="font-semibold mt-1">
                       <span className="text-gray-500 mr-3">details:</span>{" "}
                       {or?.shippingAddress?.city} (
                       {or?.shippingAddress?.details})
-                    </p>
-                    <div className="flex items-center mt-1">
+                    </p>*/}
+                    {/*<div className="flex items-center mt-1">
                       <span className="text-gray-500  mr-3">phone:</span>
                       {or?.shippingAddress?.phone}
-                    </div>
+                    </div>*/}
                     <div className="items mt-3">
                       <h3 className="font-semibold">Items:</h3>
                       <div className="images flex items-center gap-3 flex-wrap">
