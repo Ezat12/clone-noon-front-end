@@ -343,12 +343,12 @@ function ShowProduct() {
         <div className="images lg:col-span-1 md:col-span-1 col-span-1 flex gap-5">
           <div className="flex flex-col gap-3 items-center justify-center">
             <div
-              onClick={() => handleImgCover(product.imgCover)}
+              onClick={() => handleImgCover(product?.imgCover)}
               className="cursor-pointer w-20 h-28 border-solid border-[1px] border-gray-400 rounded-md"
             >
-              <img src={product.imgCover} />
+              <img src={product?.imgCover} />
             </div>
-            {product.images.map((img, index) => {
+            {product?.images.map((img, index) => {
               return (
                 <div
                   key={index}
@@ -369,21 +369,21 @@ function ShowProduct() {
         <div className="content lg:col-span-1 md:col-span-1 col-span-1 border-r-[1px] pr-4">
           <div>
             <span className="block font-semibold text-xl text-gray-500 capitalize">
-              {product.title}
+              {product?.title}
             </span>
-            <p className="mt-4 text-xl font-semibold ">{product.description}</p>
-            {product.price_discount ? (
+            <p className="mt-4 text-xl font-semibold ">{product?.description}</p>
+            {product?.price_discount ? (
               <div>
                 <div className="flex items-center gap-3 mt-4">
                   <span className="text-sm">Was:</span>
                   <span className="text-gray-500 line-through font-thin">
-                    EGP {product.price.toFixed(2)}
+                    EGP {product?.price?.toFixed(2)}
                   </span>
                 </div>
                 <div className="flex items-center gap-3 mt-4">
                   <span className="text-sm">Now:</span>
                   <span className="text-xl font-bold text-gray-800">
-                    EGP {product.price_discount.toFixed(2)}
+                    EGP {product?.price_discount?.toFixed(2)}
                   </span>
                 </div>
               </div>
@@ -391,7 +391,7 @@ function ShowProduct() {
               <div className="flex items-center gap-3 mt-4">
                 <span className="text-sm">Now:</span>
                 <span className="text-xl font-bold text-gray-800">
-                  EGP {product.price.toFixed(2)}
+                  EGP {product?.price?.toFixed(2)}
                 </span>
               </div>
             )}
@@ -489,8 +489,8 @@ function ShowProduct() {
                 }
               >
                 Add To card
-                {cartUser.map((item, index) => {
-                  if (item.product._id === product._id) {
+                {cartUser?.map((item, index) => {
+                  if (item?.product._id === product._id) {
                     // setAddCart(false);
                     return (
                       <span
@@ -504,7 +504,7 @@ function ShowProduct() {
                 })}
               </button>
               <button className="bg-[#f2f2f5] border-[1px] p-4 flex items-center justify-center rounded-md">
-                {wishList && !wishlistData.includes(product._id) ? (
+                {wishList && !wishlistData?.includes(product._id) ? (
                   <FaHeart onClick={handleWishListAdd} color="#aab8c2" />
                 ) : (
                   <FaHeart onClick={handleWishListDelete} color="#2563eb" />
@@ -519,7 +519,7 @@ function ShowProduct() {
           Product Ratings & Reviews
         </h1>
         <div className="grid grid-cols-3 ">
-          {product.ratingQuantity > 0 ? (
+          {product?.ratingQuantity > 0 ? (
             <div className="col-span-3 lg:col-span-1 md:col-span-1">
               <div className="mt-5">
                 <h1 className="text-xl font-semibold text-gray-600">
@@ -528,12 +528,12 @@ function ShowProduct() {
                 <div className="flex items-center gap-3">
                   <Rating
                     readOnly
-                    value={product.rating_average}
+                    value={product?.rating_average}
                     className="w-52 mt-5"
                     itemStyles={myStylesOverall}
                   />
                   <span className="mt-5 text-gray-500 text-sm">
-                    ({product.ratingQuantity} rating)
+                    ({product?.ratingQuantity} rating)
                   </span>
                 </div>
               </div>
@@ -552,7 +552,7 @@ function ShowProduct() {
             <div className="mt-5 pb-3 border-b-[1px] border-collapse">
               <div className="name flex mt-3 gap-2 flex-col">
                 <span className="text-sm text-gray-600 font-semibold">
-                  {user.name}
+                  {user?.name}
                 </span>
                 <Rating
                   value={rating}
@@ -578,7 +578,7 @@ function ShowProduct() {
               </div>
             </div>
             <div className="comments bg-[#eeeeee52] px-2 flex flex-col gap-2 mt-3">
-              {ratingDate.map((rat, index) => {
+              {ratingDate?.map((rat, index) => {
                 return (
                   <div
                     key={index}
@@ -586,7 +586,7 @@ function ShowProduct() {
                   >
                     <div className="content-review">
                       <div className="flex gap-2 items-center">
-                        <span>{rat.user.name}</span>
+                        <span>{rat?.user?.name}</span>
                         <div className="flex items-center">
                           <FaStar color="#f3ac30" />
                           <span className="text-gray-500">{rat.ratings}</span>
@@ -594,7 +594,7 @@ function ShowProduct() {
                       </div>
                       <p className="mt-1 text-gray-500">{rat.title}</p>
                     </div>
-                    {rat.user.name === user.name && (
+                    {rat?.user?.name === user?.name && (
                       <div
                         onClick={() => setDropReview((set) => !set)}
                         className="options relative cursor-pointer"
